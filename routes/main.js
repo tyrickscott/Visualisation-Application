@@ -115,8 +115,7 @@ module.exports = function(app) {
         })
     })
 
-    // Create a new route in main.js for viewing statistics, uses the redirectLogin middleware to ensure that only authenticated users can access the statistics page
-    app.get('/view-statistics', (req, res) => {
-        res.render('view-statistics.ejs');
+    app.get('/viewStatistics', function (req, res) {
+        res.render('viewStatistics.ejs');
     });
 }

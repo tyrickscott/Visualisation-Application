@@ -11,6 +11,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // Set up css
 app.use(express.static(__dirname + '/public'));
 
+// Serve the viewStatisticsScript.js file
+app.use('/viewStatisticsScript.js', express.static(__dirname + '/public/viewStatisticsScript.js'));
+
 
 
 // Set the directory where Express will pick up HTML files
