@@ -57,3 +57,8 @@ a:link {
 .container {
   display: flex;
 }
+
+.menu-item:hover {
+  background-color: lightgray; 
+  cursor: pointer; /*change cursor to pointer on hover*/
+}
