@@ -59,6 +59,6 @@ a:link {
 }
 
 .menu-item:hover {
-  background-color: gray; 
+  background-color: lightgray; 
   cursor: pointer; /*change cursor to pointer on hover*/
 }
