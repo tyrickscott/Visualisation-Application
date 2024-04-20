@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Record Information</title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<body>
+    <h1>Record Information</h1>
+    <form action="/submitInformation" method="post">
+        <label for="componentName">Component Name:</label>
+        <!--select element with an 'Other' option-->
+        <select id="componentNameSelect" name="componentName" required>
+            <!--populate options from the items array -->
+            <% items.forEach(function(item) { %>
+                <option value="<%= item.name %>"><%= item.name %></option>
+            <% }); %>
+            <option value="Other">Other</option>
+        </select>
+        <!--text input for custom component name-->
+        <input type="text" id="customComponentName" name="customComponentName" style="display:none;" placeholder="Enter custom component name">
+        <br>
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+            <option value="inUse">In Use</option>
+            <option value="inStorage">In Storage</option>
+            <option value="underMaintenance">Under Maintenance</option>
+        </select>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        //visibility of customComponentName input field
+        document.getElementById('componentNameSelect').addEventListener('change', function() {
+            const customComponentName = document.getElementById('customComponentName');
+            if (this.value === 'Other') {
+                customComponentName.style.display = 'block';
+                customComponentName.required = true;
+            } else {
+                customComponentName.style.display = 'none';
+                customComponentName.required = false;
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+

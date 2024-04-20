@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage List</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <h1>Manage List</h1>
+    <form action="/addItem" method="post">
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName" name="itemName" required>
+        <input type="submit" value="Add Item">
+    </form>
+
+    <h2>Existing Items</h2>
+    <ul id="itemList">
+        <% items.forEach(function(item) { %>
+            <li>
+                <%= item.name %>
+                <a href="/deleteItem/<%= item.id %>">Delete</a>
+            </li>
+        <% }); %>
+    </ul>
+
+    <p><a href="/">Back to Home</a></p>
+</body>
+</html>

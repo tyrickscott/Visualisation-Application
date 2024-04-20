@@ -1,14 +1,28 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Final Project</title>
-    <link rel="stylesheet"  type="text/css" href="/main.css" />
-  </head>
-  <body>
-    <h1>Final Project</h1>
-    <p><a href="register">Register with us</a></p>
-    <p><a href="login">Login</a></p>
-    <p><a href="logout">Logout</a></p>
+<head>
+    <title>RoundManager</title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<body>
+    <h1>RoundManager</h1>
     <p><a href="/viewStatistics">View Statistics</a></p>
-  </body>
+    <p><a href="/recordInformation">Record Information</a></p>
+    <p><a href="/manageList">Manage List</p>
+    <p><a href="/createAlerts">Create Alerts</a></p>
+
+    <!--alert section-->
+    <% if (alerts && alerts.length > 0) { %>
+        <div class="alerts-section">
+            <h2>Alerts</h2>
+            <ul>
+                <% alerts.forEach(alert => { %>
+                    <li><strong><%= alert.name %></strong> is running low in storage </li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+</body>
 </html>
+
+

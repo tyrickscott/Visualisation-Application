@@ -62,3 +62,9 @@ a:link {
   background-color: lightgray; 
   cursor: pointer; /*change cursor to pointer on hover*/
 }
+
+/*CSS rule to set the height of the dropdown menu */
+#itemSelect {
+  height: 30px; /*Set the width for the dropdown menu */
+}
+

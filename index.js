@@ -3,7 +3,6 @@ var express = require ('express')
 var ejs = require('ejs')
 var bodyParser= require ('body-parser')
 const mysql = require('mysql'); 
-const expressSanitizer = require('express-sanitizer');
 
 // Create the express application object
 const app = express()
@@ -12,9 +11,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // Set up css
 app.use(express.static(__dirname + '/public'));
-
-// Create an input sanitizer
-app.use(expressSanitizer());
 
 // Serve the viewStatisticsScript.js file
 app.use('/viewStatisticsScript.js', express.static(__dirname + '/public/viewStatisticsScript.js'));
@@ -34,7 +30,6 @@ db.connect((err) => {
     console.log('Connected to database');
 });
 global.db = db;
-
 
 // Set the directory where Express will pick up HTML files
 // __dirname will get the current directory
