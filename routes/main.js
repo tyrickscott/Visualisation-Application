@@ -113,7 +113,38 @@ module.exports = function(app) {
         });
     });
 
-    
+    //route for creating alerts
+    app.get('/createAlerts', function(req, res) {
+        //fetch existing items from the database
+        const sql = "SELECT name FROM storage_components";
+        db.query(sql, function(err, results) {
+            if (err) {
+                console.error("Error fetching items from database:", err);
+                res.send("Error fetching items. Please try again.");
+            } else {
+                //render the createAlerts.ejs file and pass the items array
+                res.render('createAlerts', { items: results });
+            }
+        });
+    });
+
+    //handle the creation of a new alert
+    app.post('/createAlert', function(req, res) {
+        const itemName = req.body.itemName;
+        const threshold = req.body.threshold;
+
+        //insert the new alert into the database
+        const sql = "INSERT INTO alerts (item_name, threshold) VALUES (?, ?)";
+        db.query(sql, [itemName, threshold], function(err, result) {
+            if (err) {
+                console.error("Error inserting alert into database:", err);
+                res.send("Error creating alert. Please try again.");
+            } else {
+                console.log("Alert created successfully.");
+                res.redirect('/');
+            }
+        });
+    });
     //fetch data from the storage_components table and return the data in JSON format
     app.get('/api/getStorageComponentsItems', function(req, res) {
         const sql = "SELECT DISTINCT name FROM storage_components";
